@@ -1,6 +1,6 @@
 {
   "name": "@masaajid/prayer-times-web",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple HTML/JS web interface for calculating prayer times using @masaajid/prayer-times library",
   "main": "dist/index.html",
   "type": "module",
@@ -26,7 +26,7 @@
   "author": "Masaajid Team",
   "license": "MIT",
   "dependencies": {
-    "@masaajid/prayer-times": "^1.0.0"
+    "@masaajid/prayer-times": "^1.0.1"
   },
   "devDependencies": {},
   "homepage": "https://masaajid.github.io/prayer-times-web/",
