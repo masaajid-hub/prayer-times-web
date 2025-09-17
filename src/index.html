@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prayer Times Calculator - Masaajid</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕌</text></svg>"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🕌 Prayer Times Calculator</h1>
+        <p>Calculate accurate prayer times for any location worldwide</p>
+        <div class="header-description">
+          <p>
+            This web calculator demonstrates the capabilities of the
+            <a href="https://www.npmjs.com/package/@masaajid/prayer-times" target="_blank">
+              @masaajid/prayer-times
+            </a>
+            TypeScript library. Choose from multiple calculation methods, view prayer times
+            for single days or entire years, and export your results for personal use.
+          </p>
+        </div>
+      </header>
+
+      <main>
+        <section class="input-section">
+          <div class="location-input">
+            <h2>Location</h2>
+            <div class="input-group">
+              <label for="address">Address or City:</label>
+              <div class="address-input-container">
+                <input
+                  type="text"
+                  id="address"
+                  placeholder="e.g., Kuala Lumpur, Malaysia or New York, USA"
+                />
+                <button id="search-address" class="btn-secondary">
+                  🔍 Search
+                </button>
+              </div>
+            </div>
+            <div class="or-divider">
+              <span>OR enter coordinates directly:</span>
+            </div>
+            <div class="input-group">
+              <label for="latitude">Latitude:</label>
+              <input
+                type="number"
+                id="latitude"
+                step="any"
+                placeholder="e.g., 3.1390"
+                required
+              />
+            </div>
+            <div class="input-group">
+              <label for="longitude">Longitude:</label>
+              <input
+                type="number"
+                id="longitude"
+                step="any"
+                placeholder="e.g., 101.6869"
+                required
+              />
+            </div>
+            <div class="input-group">
+              <label for="timezone">Timezone:</label>
+              <select id="timezone">
+                <option value="">Auto-detect</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="settings">
+            <h2>Calculation Settings</h2>
+            <div class="input-group">
+              <label for="calculation-method">Calculation Method:</label>
+              <select id="calculation-method">
+                <option value="MWL">Muslim World League</option>
+                <option value="Egypt">Egyptian General Authority</option>
+                <option value="Karachi">
+                  University of Islamic Sciences, Karachi
+                </option>
+                <option value="UmmAlQura">
+                  Umm Al-Qura University, Makkah
+                </option>
+                <option value="Dubai">Dubai</option>
+                <option value="Moonsighting">Moonsighting Committee</option>
+                <option value="ISNA">Islamic Society of North America</option>
+                <option value="Qatar">Qatar</option>
+                <option value="Singapore">Singapore</option>
+                <option value="JAKIM">Jabatan Kemajuan Islam Malaysia</option>
+                <option value="Kemenag">Kementerian Agama, Indonesia</option>
+                <option value="Tehran">
+                  Institute of Geophysics, University of Tehran
+                </option>
+                <option value="Turkey">Turkey Diyanet</option>
+                <option value="France12">France (12°)</option>
+                <option value="France15">France (15°)</option>
+                <option value="France18">France (18°)</option>
+                <option value="Russia">Russia</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label for="madhab">Madhab (Asr Calculation):</label>
+              <select id="madhab">
+                <option value="Shafi">Shafi, Maliki, Hanbali</option>
+                <option value="Hanafi">Hanafi</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label for="date">Date:</label>
+              <input type="date" id="date" required />
+            </div>
+          </div>
+
+          <button id="calculate" class="btn-primary">
+            🕰️ Calculate Prayer Times
+          </button>
+        </section>
+
+        <section
+          class="results-section"
+          id="results-section"
+          style="display: none"
+        >
+          <h2>Prayer Times</h2>
+
+          <!-- Time Range Tabs -->
+          <div class="time-tabs">
+            <button class="tab-button active" data-tab="single">Today</button>
+            <button class="tab-button" data-tab="week">7 Days</button>
+            <button class="tab-button" data-tab="month">Month</button>
+            <button class="tab-button" data-tab="year">Year</button>
+          </div>
+
+          <!-- Results Legend -->
+          <div class="results-legend" id="results-legend">
+            <!-- Location and date info will be populated here -->
+          </div>
+
+          <!-- Export Controls -->
+          <div class="export-controls">
+            <button id="copy-results" class="btn-secondary">
+              📋 Copy Results
+            </button>
+            <button id="download-csv" class="btn-secondary">
+              💾 Download CSV
+            </button>
+            <button id="download-csv-full" class="btn-secondary" style="display: none;">
+              💾 Download Full CSV
+            </button>
+          </div>
+
+          <!-- Tab Content -->
+          <div class="tab-content active" id="tab-single">
+            <div class="prayer-times-grid" id="prayer-times">
+              <!-- Single day prayer times will be populated here -->
+            </div>
+            <div class="location-info" id="location-info">
+              <!-- Location info will be populated here -->
+            </div>
+          </div>
+
+          <div class="tab-content" id="tab-week">
+            <div class="week-calendar" id="week-calendar">
+              <!-- 7-day calendar will be populated here -->
+            </div>
+          </div>
+
+          <div class="tab-content" id="tab-month">
+            <div class="month-calendar" id="month-calendar">
+              <!-- Monthly calendar will be populated here -->
+            </div>
+          </div>
+
+          <div class="tab-content" id="tab-year">
+            <div class="year-overview" id="year-overview">
+              <!-- Yearly overview will be populated here -->
+            </div>
+          </div>
+        </section>
+
+        <section class="error-section" id="error-section" style="display: none">
+          <div class="error-message" id="error-message">
+            <!-- Error messages will be shown here -->
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <p>
+          Powered by
+          <a
+            href="https://www.npmjs.com/package/@masaajid/prayer-times"
+            target="_blank"
+            >@masaajid/prayer-times v1.0.0</a
+          >
+        </p>
+        <p>
+          Part of the
+          <a href="https://github.com/masaajid" target="_blank"
+            >Masaajid Platform</a
+          >
+        </p>
+      </footer>
+    </div>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>

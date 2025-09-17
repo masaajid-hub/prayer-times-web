@@ -1,0 +1,40 @@
+{
+  "name": "@masaajid/prayer-times-web",
+  "version": "1.0.0",
+  "description": "Simple HTML/JS web interface for calculating prayer times using @masaajid/prayer-times library",
+  "main": "dist/index.html",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run build && bun serve.js",
+    "dev:watch": "bun --hot serve.js",
+    "build": "bun run build:js && bun run build:html",
+    "build:js": "bun build src/main.js --outdir dist --target browser --format esm --minify",
+    "build:html": "cp src/index.html dist/ && cp src/style.css dist/",
+    "typecheck": "echo 'No TypeScript in this package'",
+    "test": "echo 'No tests configured yet'",
+    "deploy": "bun run build",
+    "serve": "bun serve.js"
+  },
+  "keywords": [
+    "prayer-times",
+    "islamic",
+    "salah",
+    "calculator",
+    "web",
+    "masaajid"
+  ],
+  "author": "Masaajid Team",
+  "license": "MIT",
+  "dependencies": {
+    "@masaajid/prayer-times": "^1.0.0"
+  },
+  "devDependencies": {},
+  "homepage": "https://masaajid.github.io/prayer-times-web/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/masaajid/prayer-times-web.git"
+  },
+  "bugs": {
+    "url": "https://github.com/masaajid/prayer-times-web/issues"
+  }
+}

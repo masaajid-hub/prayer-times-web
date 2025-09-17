@@ -1,0 +1,14 @@
+{
+  "lockfileVersion": 1,
+  "workspaces": {
+    "": {
+      "name": "@masaajid/prayer-times-web",
+      "dependencies": {
+        "@masaajid/prayer-times": "^1.0.0",
+      },
+    },
+  },
+  "packages": {
+    "@masaajid/prayer-times": ["@masaajid/prayer-times@1.0.0", "", {}, "sha512-hj5aAZY2Hb61TZVDm1+NPzXwLeH5jdyfhsXklmrbZkYyu/3eEkfrb0OmJZ6deJ4y2g/Wk9DiTrIPbCXrcBixSw=="],
+  }
+}
